@@ -1,0 +1,26 @@
+{
+    "add_is_visible": true,
+    "category": "visual elements",
+    "default_dim": {
+        "height": 45,
+        "width": 45
+    },
+    "display": "Juno Pagamentos Live",
+    "events": {
+        "ACs": {
+            "caption": "Hash Cartão Gerado",
+            "name": "credit_card_hash_generated"
+        }
+    },
+    "icon": "ion-cash",
+    "states": {
+        "AAN": {
+            "caption": "Hash do Cartão",
+            "initialization_code": {
+                "fn": "function(properties, context) {\n\n\n\n}"
+            },
+            "name": "hash_cartao",
+            "value": "text"
+        }
+    }
+}

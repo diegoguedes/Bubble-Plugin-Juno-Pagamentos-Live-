@@ -1,0 +1,41 @@
+{
+    "caption": "Obter Hash do Cartão e colocar no elemento",
+    "fields": {
+        "AAX": {
+            "caption": "N° Cartão (16 dígitos)",
+            "doc": "",
+            "editor": "DynamicValue",
+            "name": "cardnumber",
+            "rank": 0,
+            "value": "text"
+        },
+        "AAY": {
+            "caption": "Nome do Titular do Cartão",
+            "editor": "DynamicValue",
+            "name": "holdername",
+            "rank": 1,
+            "value": "text"
+        },
+        "AAZ": {
+            "caption": "Cód. CVV",
+            "editor": "DynamicValue",
+            "name": "securitycode",
+            "rank": 2,
+            "value": "text"
+        },
+        "AAa": {
+            "caption": "Vencimento - Mês",
+            "editor": "DynamicValue",
+            "name": "expirationmonth",
+            "rank": 3,
+            "value": "text"
+        },
+        "AAb": {
+            "caption": "Vencimento - Ano",
+            "editor": "DynamicValue",
+            "name": "expirationyear",
+            "rank": 4,
+            "value": "text"
+        }
+    }
+}

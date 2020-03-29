@@ -1,0 +1,613 @@
+{
+    "add_basic_authentication": true,
+    "add_to_header": true,
+    "auth": "oauth2_custom",
+    "authentication_url": "https://sandbox.boletobancario.com/authorization-server/authorize",
+    "calls": {
+        "AAC": {
+            "doc_link": "https://dev.juno.com.br/api/v2#tag/Saldo",
+            "get_headers": false,
+            "initialized": true,
+            "method": "get",
+            "must_reinitialize": false,
+            "name": "[Live] Consultar Saldo Juno",
+            "publish_as": "data",
+            "rank": 0,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.AAC",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.AAC\":{\"caption\":\"[Live] Consultar Saldo Juno\",\"fields\":{\"_p_balance\":{\"ret_value\":\"number\",\"caption\":\"balance\",\"path\":[\"balance\"]},\"_p_withheldBalance\":{\"ret_value\":\"number\",\"caption\":\"withheldBalance\",\"path\":[\"withheldBalance\"]},\"_p_transferableBalance\":{\"ret_value\":\"number\",\"caption\":\"transferableBalance\",\"path\":[\"transferableBalance\"]},\"_p__links.self.href\":{\"ret_value\":\"_ignore\"}}}}",
+            "url": "https://api.juno.com.br/balance"
+        },
+        "ABo": {
+            "0": "A",
+            "1": "B",
+            "2": "n",
+            "body": "{\n  \"chargeId\": \"<chargeId>\",\n  \"billing\": {\n    \"email\": \"<email>\",\n    \"address\": {\n      \"street\": \"<street>\",\n      \"number\": \"<number>\",\n      \"complement\": \"<complement>\",\n      \"neighborhood\": \"<neighborhood>\",\n      \"city\": \"<city>\",\n      \"state\": \"<state>\",\n      \"postCode\": \"<postCode>\"\n    }\n  },\n  \"creditCardDetails\": {\n    \"creditCardHash\": \"<creditCardHash>\"\n  }\n}",
+            "body_params": {
+                "ABq": {
+                    "doc": "ID da Cobrança. Puxe esse ID com a chamada \"Criar Cobrança\". Insira aqui o ID do Primeiro Item da lista de Cobranças geradas na resposta ('s embedded charges: first item's id).\nEsse ID começa com \"chr_\"",
+                    "key": "chargeId",
+                    "private": true,
+                    "value": ""
+                },
+                "ABt": {
+                    "doc": "Número da Residência\nEx: 1578",
+                    "key": "number",
+                    "private": true,
+                    "value": ""
+                },
+                "ABu": {
+                    "doc": "Complemento da Residência\nEx: Ed. Museu de Arte de São Paulo",
+                    "key": "complement",
+                    "private": true,
+                    "value": ""
+                },
+                "ABv": {
+                    "doc": "Bairro\nEx: Bela Vista",
+                    "key": "neighborhood",
+                    "private": true,
+                    "value": ""
+                },
+                "ABw": {
+                    "doc": "Cidade\nEx: São Paulo",
+                    "key": "city",
+                    "private": true,
+                    "value": ""
+                },
+                "ABx": {
+                    "doc": "Estado com 2 dígitos\nEx: SP",
+                    "key": "state",
+                    "private": true,
+                    "value": ""
+                },
+                "ABy": {
+                    "doc": "CEP sem o traço.\nEx: 01310200",
+                    "key": "postCode",
+                    "private": true,
+                    "value": ""
+                },
+                "ABz": {
+                    "doc": "Hash do cartão de crédito obtido com a ação Obter Hash do Cartão. Insira o elemento \"Juno Pagamentos\" na tela, execute a ação Obter Hash, e então puxa o \"Juno Pagamentos's Hash do Cartão\".",
+                    "key": "creditCardHash",
+                    "private": true,
+                    "value": ""
+                },
+                "ACe": {
+                    "doc": "Email do cliente\nEx: renato@semcodar.com.br",
+                    "key": "email",
+                    "private": true,
+                    "value": ""
+                },
+                "ACf": {
+                    "doc": "Rua\nEx: Av. Paulista",
+                    "key": "street",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createPayment",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Fazer pagamento da cobrança",
+            "publish_as": "action",
+            "rank": 4,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ABo",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ABo\":{\"caption\":\"[Live] Fazer pagamento da cobrança\",\"fields\":{\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_installments\":{\"ret_value\":\"number\",\"caption\":\"installments\",\"path\":[\"installments\"]},\"_p_payments\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ABo.payments\",\"caption\":\"payments\",\"path\":[\"payments\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ABo._links\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ABo.payments\":{\"caption\":\"[Live] Fazer pagamento da cobrança payment\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_chargeId\":{\"ret_value\":\"text\",\"caption\":\"chargeId\",\"path\":[\"chargeId\"]},\"_p_date\":{\"ret_value\":\"date\",\"caption\":\"date\",\"path\":[\"date\"]},\"_p_releaseDate\":{\"ret_value\":\"date\",\"caption\":\"releaseDate\",\"path\":[\"releaseDate\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_fee\":{\"ret_value\":\"number\",\"caption\":\"fee\",\"path\":[\"fee\"]},\"_p_type\":{\"ret_value\":\"text\",\"caption\":\"type\",\"path\":[\"type\"]},\"_p_status\":{\"ret_value\":\"text\",\"caption\":\"status\",\"path\":[\"status\"]},\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_failReason\":{\"ret_value\":\"text\",\"caption\":\"failReason\",\"path\":[\"failReason\"]}}},\"plugin_api.ABo._links\":{\"caption\":\"[Live] Fazer pagamento da cobrança _link\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/payments"
+        },
+        "ACB": {
+            "0": "A",
+            "1": "C",
+            "2": "A",
+            "body": "{\n  \"charge\": {\n    \"description\": \"<description>\",\n    \"amount\": <amount>,\n    \"paymentTypes\": [\"CREDIT_CARD\"],\n    \"split\": [\n      {\n        \"recipientToken\": \"<recipientToken1>\",\n        \"percentage\": <percentage1>,\n        \"amountRemainder\": true,\n        \"chargeFee\": true\n      },\n      {\n        \"recipientToken\": \"<recipientToken2>\",\n        \"percentage\": <percentage2>\n      },\n      {\n        \"recipientToken\": \"<recipientToken3>\",\n        \"percentage\": <percentage3>\n      }\n    ]\n  },\n  \"billing\": {\n    \"name\": \"<name>\",\n    \"document\": \"<documentCPF>\",\n    \"notify\": false\n  }\n}",
+            "body_params": {
+                "ACC": {
+                    "doc": "Descrição da Cobrança\nEx: Cobrança Teste",
+                    "key": "description",
+                    "private": true,
+                    "value": ""
+                },
+                "ACG": {
+                    "doc": "Valor da cobrança dividido por '.' e 2 decimais.\nEx: 15.00",
+                    "key": "amount",
+                    "private": true,
+                    "value": ""
+                },
+                "ACO": {
+                    "doc": "TOKEN PRIVADO do 1° recebedor (provavelmente você). Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACQ": {
+                    "doc": "Porcentagem de comissão do 1° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACS": {
+                    "doc": "TOKEN PRIVADO do 2° recebedor. Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACU": {
+                    "doc": "Porcentagem de comissão do 2° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACW": {
+                    "doc": "TOKEN PRIVADO do 3° recebedor. Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken3",
+                    "private": true,
+                    "value": ""
+                },
+                "ACY": {
+                    "doc": "Porcentagem de comissão do 3° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage3",
+                    "private": true,
+                    "value": ""
+                },
+                "ACZ": {
+                    "doc": "Nome do Cliente\nEx: Renato Asse",
+                    "key": "name",
+                    "private": true,
+                    "value": ""
+                },
+                "ACd": {
+                    "doc": "CPF do cliente sem traços\nEx: 20279735081",
+                    "key": "documentCPF",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createCharge",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Criar cobrança com 2 splits",
+            "publish_as": "action",
+            "rank": 3,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACB",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACB\":{\"caption\":\"[Live] Criar cobrança com 2 split\",\"fields\":{\"_p__embedded.charges\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACB._embedded.charges\",\"caption\":\"_embedded charges\",\"path\":[\"_embedded\",\"charges\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACB._links_3\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACB._embedded.charges\":{\"caption\":\"[Live] Criar cobrança com 2 splits _embedded charge\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_code\":{\"ret_value\":\"text\",\"caption\":\"code\",\"path\":[\"code\"]},\"_p_reference\":{\"ret_value\":\"text\",\"caption\":\"reference\",\"path\":[\"reference\"]},\"_p_dueDate\":{\"ret_value\":\"date\",\"caption\":\"dueDate\",\"path\":[\"dueDate\"]},\"_p_link\":{\"ret_value\":\"text\",\"caption\":\"link\",\"path\":[\"link\"]},\"_p_checkoutUrl\":{\"ret_value\":\"text\",\"caption\":\"checkoutUrl\",\"path\":[\"checkoutUrl\"]},\"_p_installmentLink\":{\"ret_value\":\"text\",\"caption\":\"installmentLink\",\"path\":[\"installmentLink\"]},\"_p_payNumber\":{\"ret_value\":\"text\",\"caption\":\"payNumber\",\"path\":[\"payNumber\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_billetDetails.bankAccount\":{\"ret_value\":\"text\",\"caption\":\"billetDetails bankAccount\",\"path\":[\"billetDetails\",\"bankAccount\"]},\"_p_billetDetails.ourNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails ourNumber\",\"path\":[\"billetDetails\",\"ourNumber\"]},\"_p_billetDetails.barcodeNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails barcodeNumber\",\"path\":[\"billetDetails\",\"barcodeNumber\"]},\"_p_billetDetails.portfolio\":{\"ret_value\":\"text\",\"caption\":\"billetDetails portfolio\",\"path\":[\"billetDetails\",\"portfolio\"]},\"_p_payments\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACB.payments\",\"caption\":\"payments\",\"path\":[\"payments\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACB._links\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACB.payments\":{\"caption\":\"[Live] Criar cobrança com 2 splits payment\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_chargeId\":{\"ret_value\":\"text\",\"caption\":\"chargeId\",\"path\":[\"chargeId\"]},\"_p_date\":{\"ret_value\":\"date\",\"caption\":\"date\",\"path\":[\"date\"]},\"_p_releaseDate\":{\"ret_value\":\"date\",\"caption\":\"releaseDate\",\"path\":[\"releaseDate\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_fee\":{\"ret_value\":\"number\",\"caption\":\"fee\",\"path\":[\"fee\"]},\"_p_type\":{\"ret_value\":\"text\",\"caption\":\"type\",\"path\":[\"type\"]},\"_p_status\":{\"ret_value\":\"text\",\"caption\":\"status\",\"path\":[\"status\"]},\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_failReason\":{\"ret_value\":\"text\",\"caption\":\"failReason\",\"path\":[\"failReason\"]}}},\"plugin_api.ACB._links\":{\"caption\":\"[Live] Criar cobrança com 2 splits _link\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}},\"plugin_api.ACB._links_3\":{\"caption\":\"[Live] Criar cobrança com 2 splits _link 3\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/charges"
+        },
+        "ACh": {
+            "0": "A",
+            "1": "C",
+            "2": "g",
+            "body": "{\n  \"charge\": {\n    \"description\": \"<description>\",\n    \"amount\": <amount>,\n    \"paymentTypes\": [\"CREDIT_CARD\"],\n    \"split\": [\n      {\n        \"recipientToken\": \"<recipientToken1>\",\n        \"percentage\": <percentage1>,\n        \"amountRemainder\": true,\n        \"chargeFee\": true\n      },\n      {\n        \"recipientToken\": \"<recipientToken2>\",\n        \"percentage\": <percentage2>\n      }\n    ]\n  },\n  \"billing\": {\n    \"name\": \"<name>\",\n    \"document\": \"<documentCPF>\",\n    \"notify\": false\n  }\n}",
+            "body_params": {
+                "ACC": {
+                    "doc": "Descrição da Cobrança\nEx: Cobrança Teste",
+                    "key": "description",
+                    "private": true,
+                    "value": ""
+                },
+                "ACG": {
+                    "doc": "Valor da cobrança dividido por '.' e 2 decimais.\nEx: 15.00",
+                    "key": "amount",
+                    "private": true,
+                    "value": ""
+                },
+                "ACO": {
+                    "doc": "TOKEN PRIVADO do 1° recebedor (provavelmente você). Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACQ": {
+                    "doc": "Porcentagem de comissão do 1° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACS": {
+                    "doc": "TOKEN PRIVADO do 2° recebedor. Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACU": {
+                    "doc": "Porcentagem de comissão do 2° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACZ": {
+                    "doc": "Nome do Cliente\nEx: Renato Asse",
+                    "key": "name",
+                    "private": true,
+                    "value": ""
+                },
+                "ACd": {
+                    "doc": "CPF do cliente sem traços\nEx: 20279735081",
+                    "key": "documentCPF",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createCharge",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Criar cobrança com 1 split",
+            "publish_as": "action",
+            "rank": 2,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACh",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACh\":{\"caption\":\"[Live] Criar cobrança com 1 split\",\"fields\":{\"_p__embedded.charges\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACh._embedded.charges\",\"caption\":\"_embedded charges\",\"path\":[\"_embedded\",\"charges\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACh._links_3\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACh._embedded.charges\":{\"caption\":\"[Live] Criar cobrança com 1 split _embedded charge\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_code\":{\"ret_value\":\"text\",\"caption\":\"code\",\"path\":[\"code\"]},\"_p_reference\":{\"ret_value\":\"text\",\"caption\":\"reference\",\"path\":[\"reference\"]},\"_p_dueDate\":{\"ret_value\":\"date\",\"caption\":\"dueDate\",\"path\":[\"dueDate\"]},\"_p_link\":{\"ret_value\":\"text\",\"caption\":\"link\",\"path\":[\"link\"]},\"_p_checkoutUrl\":{\"ret_value\":\"text\",\"caption\":\"checkoutUrl\",\"path\":[\"checkoutUrl\"]},\"_p_installmentLink\":{\"ret_value\":\"text\",\"caption\":\"installmentLink\",\"path\":[\"installmentLink\"]},\"_p_payNumber\":{\"ret_value\":\"text\",\"caption\":\"payNumber\",\"path\":[\"payNumber\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_billetDetails.bankAccount\":{\"ret_value\":\"text\",\"caption\":\"billetDetails bankAccount\",\"path\":[\"billetDetails\",\"bankAccount\"]},\"_p_billetDetails.ourNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails ourNumber\",\"path\":[\"billetDetails\",\"ourNumber\"]},\"_p_billetDetails.barcodeNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails barcodeNumber\",\"path\":[\"billetDetails\",\"barcodeNumber\"]},\"_p_billetDetails.portfolio\":{\"ret_value\":\"text\",\"caption\":\"billetDetails portfolio\",\"path\":[\"billetDetails\",\"portfolio\"]},\"_p_payments\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACh.payments\",\"caption\":\"payments\",\"path\":[\"payments\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACh._links\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACh.payments\":{\"caption\":\"[Live] Criar cobrança com 1 split payment\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_chargeId\":{\"ret_value\":\"text\",\"caption\":\"chargeId\",\"path\":[\"chargeId\"]},\"_p_date\":{\"ret_value\":\"date\",\"caption\":\"date\",\"path\":[\"date\"]},\"_p_releaseDate\":{\"ret_value\":\"date\",\"caption\":\"releaseDate\",\"path\":[\"releaseDate\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_fee\":{\"ret_value\":\"number\",\"caption\":\"fee\",\"path\":[\"fee\"]},\"_p_type\":{\"ret_value\":\"text\",\"caption\":\"type\",\"path\":[\"type\"]},\"_p_status\":{\"ret_value\":\"text\",\"caption\":\"status\",\"path\":[\"status\"]},\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_failReason\":{\"ret_value\":\"text\",\"caption\":\"failReason\",\"path\":[\"failReason\"]}}},\"plugin_api.ACh._links\":{\"caption\":\"[Live] Criar cobrança com 1 split _link\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}},\"plugin_api.ACh._links_3\":{\"caption\":\"[Live] Criar cobrança com 1 split _link 3\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/charges"
+        },
+        "ACj": {
+            "0": "A",
+            "1": "C",
+            "2": "i",
+            "body": "{\n  \"charge\": {\n    \"description\": \"<description>\",\n    \"amount\": <amount>,\n    \"paymentTypes\": [\"CREDIT_CARD\"]\n  },\n  \"billing\": {\n    \"name\": \"<name>\",\n    \"document\": \"<documentCPF>\",\n    \"notify\": false\n  }\n}",
+            "body_params": {
+                "ACC": {
+                    "doc": "Descrição da Cobrança\nEx: Cobrança Teste",
+                    "key": "description",
+                    "private": true,
+                    "value": ""
+                },
+                "ACG": {
+                    "doc": "Valor da cobrança dividido por '.' e 2 decimais.\nEx: 15.00",
+                    "key": "amount",
+                    "private": true,
+                    "value": ""
+                },
+                "ACZ": {
+                    "doc": "Nome do Cliente\nEx: Renato Asse",
+                    "key": "name",
+                    "private": true,
+                    "value": ""
+                },
+                "ACd": {
+                    "doc": "CPF do cliente sem traços\nEx: 20279735081",
+                    "key": "documentCPF",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createCharge",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Criar cobrança sem split",
+            "publish_as": "action",
+            "rank": 1,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACj",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACj\":{\"caption\":\"[Live] Criar cobrança sem split\",\"fields\":{\"_p__embedded.charges\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACj._embedded.charges\",\"caption\":\"_embedded charges\",\"path\":[\"_embedded\",\"charges\"]}}},\"plugin_api.ACj._embedded.charges\":{\"caption\":\"[Live] Criar cobrança sem split _embedded charge\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_code\":{\"ret_value\":\"text\",\"caption\":\"code\",\"path\":[\"code\"]},\"_p_reference\":{\"ret_value\":\"text\",\"caption\":\"reference\",\"path\":[\"reference\"]},\"_p_dueDate\":{\"ret_value\":\"text\",\"caption\":\"dueDate\",\"path\":[\"dueDate\"]},\"_p_checkoutUrl\":{\"ret_value\":\"text\",\"caption\":\"checkoutUrl\",\"path\":[\"checkoutUrl\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p__links.self.href\":{\"ret_value\":\"text\",\"caption\":\"_links self href\",\"path\":[\"_links\",\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/charges"
+        },
+        "ACn": {
+            "0": "A",
+            "1": "C",
+            "2": "m",
+            "body": "{\n  \"charge\": {\n    \"description\": \"<description>\",\n    \"amount\": <amount>,\n    \"paymentTypes\": [\"BOLETO\"]\n  },\n  \"billing\": {\n    \"name\": \"<name>\",\n    \"document\": \"<documentCPF>\",\n    \"notify\": false\n  }\n}",
+            "body_params": {
+                "ACC": {
+                    "doc": "Descrição da Cobrança\nEx: Cobrança Teste",
+                    "key": "description",
+                    "private": true,
+                    "value": ""
+                },
+                "ACG": {
+                    "doc": "Valor da cobrança dividido por '.' e 2 decimais.\nEx: 15.00",
+                    "key": "amount",
+                    "private": true,
+                    "value": ""
+                },
+                "ACZ": {
+                    "doc": "Nome do Cliente\nEx: Renato Asse",
+                    "key": "name",
+                    "private": true,
+                    "value": ""
+                },
+                "ACd": {
+                    "doc": "CPF do cliente sem traços\nEx: 20279735081",
+                    "key": "documentCPF",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createCharge",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Gerar boleto sem split",
+            "publish_as": "action",
+            "rank": 5,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACn",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACn\":{\"caption\":\"[Live] Gerar boleto sem split\",\"fields\":{\"_p__embedded.charges\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACn._embedded.charges\",\"caption\":\"_embedded charges\",\"path\":[\"_embedded\",\"charges\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACn._links_3\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACn._embedded.charges\":{\"caption\":\"[Live] Gerar boleto sem split _embedded charge\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_code\":{\"ret_value\":\"text\",\"caption\":\"code\",\"path\":[\"code\"]},\"_p_reference\":{\"ret_value\":\"text\",\"caption\":\"reference\",\"path\":[\"reference\"]},\"_p_dueDate\":{\"ret_value\":\"date\",\"caption\":\"dueDate\",\"path\":[\"dueDate\"]},\"_p_link\":{\"ret_value\":\"text\",\"caption\":\"link\",\"path\":[\"link\"]},\"_p_checkoutUrl\":{\"ret_value\":\"text\",\"caption\":\"checkoutUrl\",\"path\":[\"checkoutUrl\"]},\"_p_installmentLink\":{\"ret_value\":\"text\",\"caption\":\"installmentLink\",\"path\":[\"installmentLink\"]},\"_p_payNumber\":{\"ret_value\":\"text\",\"caption\":\"payNumber\",\"path\":[\"payNumber\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_billetDetails.bankAccount\":{\"ret_value\":\"text\",\"caption\":\"billetDetails bankAccount\",\"path\":[\"billetDetails\",\"bankAccount\"]},\"_p_billetDetails.ourNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails ourNumber\",\"path\":[\"billetDetails\",\"ourNumber\"]},\"_p_billetDetails.barcodeNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails barcodeNumber\",\"path\":[\"billetDetails\",\"barcodeNumber\"]},\"_p_billetDetails.portfolio\":{\"ret_value\":\"text\",\"caption\":\"billetDetails portfolio\",\"path\":[\"billetDetails\",\"portfolio\"]},\"_p_payments\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACn.payments\",\"caption\":\"payments\",\"path\":[\"payments\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACn._links\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACn.payments\":{\"caption\":\"[Live] Gerar boleto sem split payment\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_chargeId\":{\"ret_value\":\"text\",\"caption\":\"chargeId\",\"path\":[\"chargeId\"]},\"_p_date\":{\"ret_value\":\"date\",\"caption\":\"date\",\"path\":[\"date\"]},\"_p_releaseDate\":{\"ret_value\":\"date\",\"caption\":\"releaseDate\",\"path\":[\"releaseDate\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_fee\":{\"ret_value\":\"number\",\"caption\":\"fee\",\"path\":[\"fee\"]},\"_p_type\":{\"ret_value\":\"text\",\"caption\":\"type\",\"path\":[\"type\"]},\"_p_status\":{\"ret_value\":\"text\",\"caption\":\"status\",\"path\":[\"status\"]},\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_failReason\":{\"ret_value\":\"text\",\"caption\":\"failReason\",\"path\":[\"failReason\"]}}},\"plugin_api.ACn._links\":{\"caption\":\"[Live] Gerar boleto sem split _link\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}},\"plugin_api.ACn._links_3\":{\"caption\":\"[Live] Gerar boleto sem split _link 3\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/charges"
+        },
+        "ACp": {
+            "0": "A",
+            "1": "C",
+            "2": "o",
+            "body": "{\n  \"charge\": {\n    \"description\": \"<description>\",\n    \"amount\": <amount>,\n    \"paymentTypes\": [\"BOLETO\"],\n    \"split\": [\n      {\n        \"recipientToken\": \"<recipientToken1>\",\n        \"percentage\": <percentage1>,\n        \"amountRemainder\": true,\n        \"chargeFee\": true\n      },\n      {\n        \"recipientToken\": \"<recipientToken2>\",\n        \"percentage\": <percentage2>\n      }\n    ]\n  },\n  \"billing\": {\n    \"name\": \"<name>\",\n    \"document\": \"<documentCPF>\",\n    \"notify\": false\n  }\n}",
+            "body_params": {
+                "ACC": {
+                    "doc": "Descrição da Cobrança\nEx: Cobrança Teste",
+                    "key": "description",
+                    "private": true,
+                    "value": ""
+                },
+                "ACG": {
+                    "doc": "Valor da cobrança dividido por '.' e 2 decimais.\nEx: 15.00",
+                    "key": "amount",
+                    "private": true,
+                    "value": ""
+                },
+                "ACO": {
+                    "doc": "TOKEN PRIVADO do 1° recebedor (provavelmente você). Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACQ": {
+                    "doc": "Porcentagem de comissão do 1° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACS": {
+                    "doc": "TOKEN PRIVADO do 2° recebedor. Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACU": {
+                    "doc": "Porcentagem de comissão do 2° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACZ": {
+                    "doc": "Nome do Cliente\nEx: Renato Asse",
+                    "key": "name",
+                    "private": true,
+                    "value": ""
+                },
+                "ACd": {
+                    "doc": "CPF do cliente sem traços\nEx: 20279735081",
+                    "key": "documentCPF",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createCharge",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Gerar boleto com 1 split",
+            "publish_as": "action",
+            "rank": 6,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACp",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACp\":{\"caption\":\"[Live] Gerar boleto com 1 split\",\"fields\":{\"_p__embedded.charges\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACp._embedded.charges\",\"caption\":\"_embedded charges\",\"path\":[\"_embedded\",\"charges\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACp._links_3\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACp._embedded.charges\":{\"caption\":\"[Live] Gerar boleto com 1 split _embedded charge\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_code\":{\"ret_value\":\"text\",\"caption\":\"code\",\"path\":[\"code\"]},\"_p_reference\":{\"ret_value\":\"text\",\"caption\":\"reference\",\"path\":[\"reference\"]},\"_p_dueDate\":{\"ret_value\":\"date\",\"caption\":\"dueDate\",\"path\":[\"dueDate\"]},\"_p_link\":{\"ret_value\":\"text\",\"caption\":\"link\",\"path\":[\"link\"]},\"_p_checkoutUrl\":{\"ret_value\":\"text\",\"caption\":\"checkoutUrl\",\"path\":[\"checkoutUrl\"]},\"_p_installmentLink\":{\"ret_value\":\"text\",\"caption\":\"installmentLink\",\"path\":[\"installmentLink\"]},\"_p_payNumber\":{\"ret_value\":\"text\",\"caption\":\"payNumber\",\"path\":[\"payNumber\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_billetDetails.bankAccount\":{\"ret_value\":\"text\",\"caption\":\"billetDetails bankAccount\",\"path\":[\"billetDetails\",\"bankAccount\"]},\"_p_billetDetails.ourNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails ourNumber\",\"path\":[\"billetDetails\",\"ourNumber\"]},\"_p_billetDetails.barcodeNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails barcodeNumber\",\"path\":[\"billetDetails\",\"barcodeNumber\"]},\"_p_billetDetails.portfolio\":{\"ret_value\":\"text\",\"caption\":\"billetDetails portfolio\",\"path\":[\"billetDetails\",\"portfolio\"]},\"_p_payments\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACp.payments\",\"caption\":\"payments\",\"path\":[\"payments\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACp._links\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACp.payments\":{\"caption\":\"[Live] Gerar boleto com 1 split payment\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_chargeId\":{\"ret_value\":\"text\",\"caption\":\"chargeId\",\"path\":[\"chargeId\"]},\"_p_date\":{\"ret_value\":\"date\",\"caption\":\"date\",\"path\":[\"date\"]},\"_p_releaseDate\":{\"ret_value\":\"date\",\"caption\":\"releaseDate\",\"path\":[\"releaseDate\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_fee\":{\"ret_value\":\"number\",\"caption\":\"fee\",\"path\":[\"fee\"]},\"_p_type\":{\"ret_value\":\"text\",\"caption\":\"type\",\"path\":[\"type\"]},\"_p_status\":{\"ret_value\":\"text\",\"caption\":\"status\",\"path\":[\"status\"]},\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_failReason\":{\"ret_value\":\"text\",\"caption\":\"failReason\",\"path\":[\"failReason\"]}}},\"plugin_api.ACp._links\":{\"caption\":\"[Live] Gerar boleto com 1 split _link\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}},\"plugin_api.ACp._links_3\":{\"caption\":\"[Live] Gerar boleto com 1 split _link 3\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/charges"
+        },
+        "ACr": {
+            "0": "A",
+            "1": "C",
+            "2": "q",
+            "body": "{\n  \"charge\": {\n    \"description\": \"<description>\",\n    \"amount\": <amount>,\n    \"paymentTypes\": [\"BOLETO\"],\n    \"split\": [\n      {\n        \"recipientToken\": \"<recipientToken1>\",\n        \"percentage\": <percentage1>,\n        \"amountRemainder\": true,\n        \"chargeFee\": true\n      },\n      {\n        \"recipientToken\": \"<recipientToken2>\",\n        \"percentage\": <percentage2>\n      },\n      {\n        \"recipientToken\": \"<recipientToken3>\",\n        \"percentage\": <percentage3>\n      }\n    ]\n  },\n  \"billing\": {\n    \"name\": \"<name>\",\n    \"document\": \"<documentCPF>\",\n    \"notify\": false\n  }\n}",
+            "body_params": {
+                "ACC": {
+                    "doc": "Descrição da Cobrança\nEx: Cobrança Teste",
+                    "key": "description",
+                    "private": true,
+                    "value": ""
+                },
+                "ACG": {
+                    "doc": "Valor da cobrança dividido por '.' e 2 decimais.\nEx: 15.00",
+                    "key": "amount",
+                    "private": true,
+                    "value": ""
+                },
+                "ACO": {
+                    "doc": "TOKEN PRIVADO do 1° recebedor (provavelmente você). Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACQ": {
+                    "doc": "Porcentagem de comissão do 1° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage1",
+                    "private": true,
+                    "value": ""
+                },
+                "ACS": {
+                    "doc": "TOKEN PRIVADO do 2° recebedor. Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACU": {
+                    "doc": "Porcentagem de comissão do 2° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage2",
+                    "private": true,
+                    "value": ""
+                },
+                "ACW": {
+                    "doc": "TOKEN PRIVADO do 3° recebedor. Este token é obtido na Área Juno > Integrações.",
+                    "key": "recipientToken3",
+                    "private": true,
+                    "value": ""
+                },
+                "ACY": {
+                    "doc": "Porcentagem de comissão do 3° recebedor.\nEx: 50.00 (para 50%) ou 5.00 (para 5%).",
+                    "key": "percentage3",
+                    "private": true,
+                    "value": ""
+                },
+                "ACZ": {
+                    "doc": "Nome do Cliente\nEx: Renato Asse",
+                    "key": "name",
+                    "private": true,
+                    "value": ""
+                },
+                "ACd": {
+                    "doc": "CPF do cliente sem traços\nEx: 20279735081",
+                    "key": "documentCPF",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "body_type": "json",
+            "doc_link": "https://dev.juno.com.br/api/v2#operation/createCharge",
+            "get_headers": false,
+            "headers": {
+                "ABJ": {
+                    "key": "Content-Type",
+                    "private": true,
+                    "value": "application/json;charset=UTF-8",
+                    "visibility": "hidden"
+                }
+            },
+            "initialized": true,
+            "method": "post",
+            "must_reinitialize": false,
+            "name": "[Live] Gerar boleto com 2 splits",
+            "publish_as": "action",
+            "rank": 7,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACr",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACr\":{\"caption\":\"[Live] Gerar boleto com 2 split\",\"fields\":{\"_p__embedded.charges\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACr._embedded.charges\",\"caption\":\"_embedded charges\",\"path\":[\"_embedded\",\"charges\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACr._links_3\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACr._embedded.charges\":{\"caption\":\"[Live] Gerar boleto com 2 splits _embedded charge\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_code\":{\"ret_value\":\"text\",\"caption\":\"code\",\"path\":[\"code\"]},\"_p_reference\":{\"ret_value\":\"text\",\"caption\":\"reference\",\"path\":[\"reference\"]},\"_p_dueDate\":{\"ret_value\":\"date\",\"caption\":\"dueDate\",\"path\":[\"dueDate\"]},\"_p_link\":{\"ret_value\":\"text\",\"caption\":\"link\",\"path\":[\"link\"]},\"_p_checkoutUrl\":{\"ret_value\":\"text\",\"caption\":\"checkoutUrl\",\"path\":[\"checkoutUrl\"]},\"_p_installmentLink\":{\"ret_value\":\"text\",\"caption\":\"installmentLink\",\"path\":[\"installmentLink\"]},\"_p_payNumber\":{\"ret_value\":\"text\",\"caption\":\"payNumber\",\"path\":[\"payNumber\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_billetDetails.bankAccount\":{\"ret_value\":\"text\",\"caption\":\"billetDetails bankAccount\",\"path\":[\"billetDetails\",\"bankAccount\"]},\"_p_billetDetails.ourNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails ourNumber\",\"path\":[\"billetDetails\",\"ourNumber\"]},\"_p_billetDetails.barcodeNumber\":{\"ret_value\":\"text\",\"caption\":\"billetDetails barcodeNumber\",\"path\":[\"billetDetails\",\"barcodeNumber\"]},\"_p_billetDetails.portfolio\":{\"ret_value\":\"text\",\"caption\":\"billetDetails portfolio\",\"path\":[\"billetDetails\",\"portfolio\"]},\"_p_payments\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACr.payments\",\"caption\":\"payments\",\"path\":[\"payments\"]},\"_p__links\":{\"ret_value\":\"list.api.1581688679017x794265376661962800.plugin_api.ACr._links\",\"caption\":\"_links\",\"path\":[\"_links\"]}}},\"plugin_api.ACr.payments\":{\"caption\":\"[Live] Gerar boleto com 2 splits payment\",\"fields\":{\"_p_id\":{\"ret_value\":\"text\",\"caption\":\"id\",\"path\":[\"id\"]},\"_p_chargeId\":{\"ret_value\":\"text\",\"caption\":\"chargeId\",\"path\":[\"chargeId\"]},\"_p_date\":{\"ret_value\":\"date\",\"caption\":\"date\",\"path\":[\"date\"]},\"_p_releaseDate\":{\"ret_value\":\"date\",\"caption\":\"releaseDate\",\"path\":[\"releaseDate\"]},\"_p_amount\":{\"ret_value\":\"number\",\"caption\":\"amount\",\"path\":[\"amount\"]},\"_p_fee\":{\"ret_value\":\"number\",\"caption\":\"fee\",\"path\":[\"fee\"]},\"_p_type\":{\"ret_value\":\"text\",\"caption\":\"type\",\"path\":[\"type\"]},\"_p_status\":{\"ret_value\":\"text\",\"caption\":\"status\",\"path\":[\"status\"]},\"_p_transactionId\":{\"ret_value\":\"text\",\"caption\":\"transactionId\",\"path\":[\"transactionId\"]},\"_p_failReason\":{\"ret_value\":\"text\",\"caption\":\"failReason\",\"path\":[\"failReason\"]}}},\"plugin_api.ACr._links\":{\"caption\":\"[Live] Gerar boleto com 2 splits _link\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}},\"plugin_api.ACr._links_3\":{\"caption\":\"[Live] Gerar boleto com 2 splits _link 3\",\"fields\":{\"_p_self.href\":{\"ret_value\":\"text\",\"caption\":\"self href\",\"path\":[\"self\",\"href\"]}}}}",
+            "url": "https://api.juno.com.br/charges"
+        },
+        "ACt": {
+            "doc_link": "https://www.boletobancario.com/boletofacil/integration/integration.html",
+            "get_headers": false,
+            "initialized": true,
+            "method": "get",
+            "must_reinitialize": false,
+            "name": "[Live] Consultar Detalhes de Pagamento",
+            "params": {
+                "ACu": {
+                    "doc": "Insira o \"Payment Token\"",
+                    "key": "paymentToken",
+                    "private": true,
+                    "value": ""
+                }
+            },
+            "publish_as": "data",
+            "rank": 8,
+            "ret_value": "api.1581688679017x794265376661962800.plugin_api.ACt",
+            "should_reinitialize": true,
+            "types": "{\"plugin_api.ACt\":{\"caption\":\"[Live] Consultar Detalhes de Pagamento\",\"fields\":{\"_p_data.payment.id\":{\"ret_value\":\"text\",\"caption\":\"payment id\",\"path\":[\"data\",\"payment\",\"id\"]},\"_p_data.payment.amount\":{\"ret_value\":\"number\",\"caption\":\"payment amount\",\"path\":[\"data\",\"payment\",\"amount\"]},\"_p_data.payment.charge.amount\":{\"ret_value\":\"number\",\"caption\":\"payment charge amount\",\"path\":[\"data\",\"payment\",\"charge\",\"amount\"]},\"_p_data.payment.charge.code\":{\"ret_value\":\"text\",\"caption\":\"payment charge code\",\"path\":[\"data\",\"payment\",\"charge\",\"code\"]},\"_p_data.payment.charge.dueDate\":{\"ret_value\":\"text\",\"caption\":\"payment charge dueDate\",\"path\":[\"data\",\"payment\",\"charge\",\"dueDate\"]},\"_p_data.payment.charge.reference\":{\"ret_value\":\"text\",\"caption\":\"payment charge reference\",\"path\":[\"data\",\"payment\",\"charge\",\"reference\"]},\"_p_data.payment.creditCardId\":{\"ret_value\":\"text\",\"caption\":\"payment creditCardId\",\"path\":[\"data\",\"payment\",\"creditCardId\"]},\"_p_data.payment.date\":{\"ret_value\":\"text\",\"caption\":\"payment date\",\"path\":[\"data\",\"payment\",\"date\"]},\"_p_data.payment.fee\":{\"ret_value\":\"number\",\"caption\":\"payment fee\",\"path\":[\"data\",\"payment\",\"fee\"]},\"_p_data.payment.status\":{\"ret_value\":\"text\",\"caption\":\"payment status\",\"path\":[\"data\",\"payment\",\"status\"]},\"_p_data.payment.type\":{\"ret_value\":\"text\",\"caption\":\"payment type\",\"path\":[\"data\",\"payment\",\"type\"]},\"_p_success\":{\"ret_value\":\"boolean\",\"caption\":\"success\",\"path\":[\"success\"]}}}}",
+            "url": "https://www.boletobancario.com/boletofacil/integration/api/v1/fetch-payment-details"
+        },
+        "token_call": {
+            "body": "grant_type=client_credentials",
+            "headers": {
+                "AAD": {
+                    "key": "Content-Type",
+                    "optional": false,
+                    "private": true,
+                    "value": "application/x-www-form-urlencoded",
+                    "visibility": "hidden"
+                },
+                "AAE": {
+                    "doc": "Basic XXX . Substitua XXX pelo seguinte: acesse https://www.base64encode.org/ , e insira as credenciais 'clientId' e 'clientSecret' obtidas com a Juno, divididas por um ':'. Vamos dizer que seu clientId seja 123, e seu clientSecret seja ABC. Insira 123:456 no campo e clique em > ENCODE <. Irá aparecer um valor no campo de baixo de aprox. 68 dígitos. Copie e cole esse valor no lugar de XXX.\nOBS: Solicite à Juno um Token com permissão de Split, se for realizar pagamentos com split.",
+                    "key": "Authorization",
+                    "private": true,
+                    "visibility": "secret"
+                }
+            },
+            "method": "post",
+            "url": "https://api.juno.com.br/authorization-server/oauth/token"
+        }
+    },
+    "email_path": "clientSecret",
+    "generate_token_from_code_uri": "https://sandbox.boletobancario.com/authorization-server/oauth/token",
+    "header_key": "Authorization: Basic <basic-credentials>",
+    "human": "[Live] Juno",
+    "id_path": "clientId",
+    "oauth_user_data_call": "https://sandbox.boletobancario.com/authorization-server/me",
+    "shared_headers": {
+        "AAI": {
+            "key": "X-API-Version",
+            "private": true,
+            "value": "2",
+            "visibility": "hidden"
+        },
+        "AAJ": {
+            "doc": "Insira o seu TOKEN PRIVADO obtido na sua área Juno",
+            "key": "X-Resource-Token",
+            "private": true,
+            "visibility": "secret"
+        }
+    },
+    "token_data_type": false,
+    "token_endpoint": "https://sandbox.boletobancario.com/authorization-server/oauth/token"
+}

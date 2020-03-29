@@ -1,0 +1,11 @@
+{
+    "dependencies": {
+        "use_jquery": true
+    },
+    "shared_keys": {
+        "AAU": {
+            "caption": "Token Público",
+            "type": "client_safe"
+        }
+    }
+}
